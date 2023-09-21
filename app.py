@@ -44,8 +44,8 @@ def slack_command():
 
     command = data.get('command')
 
-    if command == '/your_command':
-        response_text = "슬래시 커맨드 '/your_command'가 실행되었습니다."
+    if command == '/my_command':
+        response_text = "슬래시 커맨드 '/my_command'가 실행되었습니다."
     else:
         response_text = "지원하지 않는 슬래시 커맨드입니다."
 
