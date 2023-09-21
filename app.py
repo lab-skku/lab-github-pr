@@ -44,8 +44,8 @@ def slack_command():
 
     command = data.get('command')
 
-    if command == '/your_command':
-        response_text = "The command of '/your_command' executed"
+    if command == '/slack_command':
+        response_text = "The command of '/slack_command' executed"
     else:
         response_text = "Not supported command"
 
