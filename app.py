@@ -38,5 +38,24 @@ def slack_events():
         return '', 200
 
 
+@app.route('/slack/command', methods=['POST'])
+def slack_command():
+    data = request.form.to_dict()
+
+    command = data.get('command')
+
+    if command == '/your_command':
+        response_text = "슬래시 커맨드 '/your_command'가 실행되었습니다."
+    else:
+        response_text = "지원하지 않는 슬래시 커맨드입니다."
+
+    response = {
+        'response_type': 'in_channel',
+        'text': response_text
+    }
+
+    return jsonify(response)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
