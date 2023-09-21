@@ -27,7 +27,7 @@ def slack_events():
         if event['type'] == 'message':
             response_text = "메시지 이벤트를 처리했습니다."
         else:
-            response_text = "지원하지 않는 이벤트 타입입니다."
+            response_text = "지원하지 않는 이벤트입니다."
 
         response = {
             'text': response_text
