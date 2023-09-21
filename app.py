@@ -1,9 +1,17 @@
-from decouple import config  # noqa
+import os
+
+import ngrok
+import requests
+from dotenv import load_dotenv
 from flask import Flask
 
 app = Flask(__name__)
 
-slack_token = config('SLACK_TOKEN')
+load_dotenv()
+
+slack_token = os.getenv('SLACK_TOKEN')
+github_token = os.getenv('GITHUB_TOKEN')
+ngrok_token = os.getenv('NGROK_TOKEN')
 
 
 @app.route('/')
@@ -55,6 +63,26 @@ def slack_command():
     }
 
     return jsonify(response)
+
+
+@app.route('/github/<github_id>', methods=['GET'])
+def github(github_id):
+    api_url = f'https://api.github.com/repos/lab-skku/lab-github-pr/collaborators/{github_id}'
+    data = {
+        'permission': 'admin'
+    }
+    headers = {
+        'Authorization': f'token {github_token}'
+    }
+    try:
+        response = requests.put(api_url, headers=headers, json=data)
+
+        if response.status_code == 204:
+            return {'message': 'added'}, 200
+        else:
+            return {'message': response.status_code}, 400
+    except requests.exceptions.RequestException as e:
+        return {'message': e}, 500
 
 
 if __name__ == '__main__':
