@@ -8,7 +8,7 @@ slack_token = config('SLACK_TOKEN')
 
 @app.route('/')
 def index():
-    return {'message': 'Hello, folks!'}, 200
+    return {'message': 'Hello, Devs!'}, 200
 
 
 @app.route('/slack/events', methods=['POST'])
