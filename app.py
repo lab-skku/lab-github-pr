@@ -1,6 +1,5 @@
 import os
 
-import ngrok
 import requests
 from dotenv import load_dotenv
 from flask import Flask
@@ -35,7 +34,7 @@ def slack_events():
         if event['type'] == 'message':
             response_text = "Handled message event"
         else:
-            response_text = "Not supported event"
+            response_text = "지원하지 않는 이벤트입니다."
 
         response = {
             'text': response_text
