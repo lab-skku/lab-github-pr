@@ -25,9 +25,9 @@ def slack_events():
         event = data.get('event')
 
         if event['type'] == 'message':
-            response_text = "메시지 이벤트를 처리했습니다."
+            response_text = "Handled message event"
         else:
-            response_text = "지원하지 않는 이벤트 타입입니다."
+            response_text = "Not supported event"
 
         response = {
             'text': response_text
@@ -45,9 +45,9 @@ def slack_command():
     command = data.get('command')
 
     if command == '/your_command':
-        response_text = "슬래시 커맨드 '/your_command'가 실행되었습니다."
+        response_text = "The command of '/your_command' executed"
     else:
-        response_text = "지원하지 않는 슬래시 커맨드입니다."
+        response_text = "Not supported command"
 
     response = {
         'response_type': 'in_channel',
