@@ -16,7 +16,7 @@ ngrok_token = os.getenv('NGROK_TOKEN')
 
 @app.route('/')
 def index():
-    return {'message': 'Hello, folks!'}, 200
+    return {'message': 'Hello, Devs!'}, 200
 
 
 @app.route('/slack/events', methods=['POST'])
@@ -35,7 +35,9 @@ def slack_events():
         if event['type'] == 'message':
             response_text = "Handled message event"
         else:
+<<<<<<< HEAD
             response_text = "Not supported event"
+=======
 
         response = {
             'text': response_text
@@ -54,6 +56,8 @@ def slack_command():
 
     if command == '/slack_command':
         response_text = "The command of '/slack_command' executed"
+    if command == '/my_command':
+        response_text = "슬래시 커맨드 '/my_command'가 실행되었습니다."
     else:
         response_text = "Not supported command"
 
