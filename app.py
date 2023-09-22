@@ -13,10 +13,10 @@ slack_token = os.getenv('SLACK_TOKEN')
 github_token = os.getenv('GITHUB_TOKEN')
 ngrok_token = os.getenv('NGROK_TOKEN')
 
-
+ 
 @app.route('/')
 def index():
-    return {'message': 'Hello, folks!'}, 200
+    return {'message': 'Hello, Devs!'}, 200
 
 
 @app.route('/slack/events', methods=['POST'])
@@ -35,7 +35,7 @@ def slack_events():
         if event['type'] == 'message':
             response_text = "Handled message event"
         else:
-            response_text = "Not supported event"
+            response_text = "지원하지 않는 이벤트입니다."
 
         response = {
             'text': response_text
