@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 slack_token = config('SLACK_TOKEN')
 
-
+ 
 @app.route('/')
 def index():
     return {'message': 'Hello, Devs!'}, 200
